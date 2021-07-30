@@ -8,13 +8,13 @@ import {HttpClient} from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private http : HttpClient ){ } 
+  constructor(private http : HttpClient ){ }
 
   ngOnInit(): void {
   }
   onWaterPlantClick(): void {
     console.log("clicked");
-    this.http.get<any>('htttp://71.182.130.180').subscribe(data => {
+    this.http.get('http://71.182.130.180',{responseType: 'text'}).subscribe(data => {
         console.log(data);
     });
 
