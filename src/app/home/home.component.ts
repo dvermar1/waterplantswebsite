@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   }
   onWaterPlantClick(): void {
     console.log("clicked");
-    this.http.get('http://71.182.130.180',{responseType: 'text'}).subscribe(data => {
+    this.http.get('https://merag.hopto.org',{responseType: 'text'}).subscribe(data => {
         console.log(data);
     });
 
