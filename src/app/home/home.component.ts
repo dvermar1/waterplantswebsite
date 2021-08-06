@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,9 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private http : HttpClient ){ }
+  isAuthenticated!: boolean;
+  constructor(private http : HttpClient ,public oktaAuth: OktaAuthService){
+  this.oktaAuth.$authenticationState.subscribe(isAuthenticated => this.isAuthenticated = isAuthenticated);}
 
   ngOnInit(): void {
   }
