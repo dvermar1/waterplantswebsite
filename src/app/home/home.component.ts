@@ -9,6 +9,8 @@ import { OktaAuthService } from '@okta/okta-angular';
 })
 export class HomeComponent implements OnInit {
   isAuthenticated!: boolean;
+  piGetResponse!: string;
+
   constructor(private http : HttpClient ,public oktaAuth: OktaAuthService){
   this.oktaAuth.$authenticationState.subscribe(isAuthenticated => this.isAuthenticated = isAuthenticated);}
 
@@ -18,6 +20,7 @@ export class HomeComponent implements OnInit {
     console.log("clicked");
     this.http.get('https://merag.hopto.org/app',{responseType: 'text'}).subscribe(data => {
         console.log(data);
+        this.piGetResponse = data;
     });
 
   }
