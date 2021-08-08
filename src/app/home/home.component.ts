@@ -27,6 +27,6 @@ export class HomeComponent implements OnInit {
 
   getHeaders(): HttpHeaders {
     const accessToken = this.oktaAuth.getAccessToken();
-    return new HttpHeaders().set('Authorization', 'Bearer ' + accessToken).set('Access-Control-Allow-Origin','*');
+    return new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
   }
 }
