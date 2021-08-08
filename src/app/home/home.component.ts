@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient,HttpHeaders} from '@angular/common/http';
 import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
@@ -18,10 +18,15 @@ export class HomeComponent implements OnInit {
   }
   onWaterPlantClick(): void {
     console.log("clicked");
-    this.http.get('https://merag.hopto.org/app',{responseType: 'text'}).subscribe(data => {
+    this.http.get('https://merag.hopto.org/app',{responseType: 'text',headers: this.getHeaders()}).subscribe(data => {
         console.log(data);
         this.piGetResponse = data;
     });
 
+  }
+
+  getHeaders(): HttpHeaders {
+    const accessToken = this.oktaAuth.getAccessToken();
+    return new HttpHeaders().set('Authorization', 'Bearer ' + accessToken);
   }
 }
